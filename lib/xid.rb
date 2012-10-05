@@ -10,3 +10,5 @@ end
 ActiveSupport.on_load(:active_record) do
   require "xid/connection_adapters/abstract_adapter"
 end
+
+require 'xid/railtie' if defined?(Rails)
