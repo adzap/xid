@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["adam.meehan@gmail.com"]
   gem.description   = %q{Adds ability to ActiveRecord to retrieve the current transaction ID}
   gem.summary       = %q{Adds ability to ActiveRecord to retrieve the current transaction ID}
-  gem.homepage      = "https://github/adzap/xid"
+  gem.homepage      = "https://github.com/adzap/xid"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
