@@ -41,6 +41,11 @@ Simply call this to get the current ID:
 
 ## Contributing
 
+You must have the ActiveRecord test suite databases set up. The gem uses these to connect to
+for each adapter's specs. 
+
+See [ActiveRecord's RUNNING_UNIT_TESTS](https://github.com/rails/rails/blob/master/activerecord/RUNNING_UNIT_TESTS)
+
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Added some feature'`)
