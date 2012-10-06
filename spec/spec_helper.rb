@@ -4,13 +4,15 @@ require 'active_record'
 require 'xid'
 
 module SpecHelpers
-  def connect_with_adapter(adapter_name)
+  def connect_with_adapter(adapter_name, options={})
     before(:all) do
-      ActiveRecord::Base.establish_connection({:adapter => adapter_name, :database => 'activerecord_unittest'}) 
+      ActiveRecord::Base.establish_connection({:adapter => adapter_name, :database => 'activerecord_unittest'}.merge(options)) 
       require "xid/connection_adapters/#{adapter_name}_adapter"
     end
   end
 end
+
+Dir["./spec/support/**/*.rb"].each { |f| require f }
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true

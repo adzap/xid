@@ -6,7 +6,8 @@ module XID
         true
       end
 
-      # From the PostgreSQL manual: http://www.postgresql.org/docs/9.1/static/functions-info.html#FUNCTIONS-TXID-SNAPSHOT
+      # From the PostgreSQL manual: 
+      # http://www.postgresql.org/docs/9.1/static/functions-info.html#FUNCTIONS-TXID-SNAPSHOT
       #
       #   The internal transaction ID type (xid) is 32 bits wide and wraps around every
       #   4 billion transactions. However, these functions export a 64-bit format that
@@ -14,7 +15,7 @@ module XID
       #   life of an installation.
       #
       def transaction_id
-        select_value('SELECT txid_current()').to_i
+        select_value('SELECT txid_current()')
       end
 
     end

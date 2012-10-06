@@ -4,6 +4,8 @@ module XID
   def self.load
     adapter_name = ActiveRecord::Base.connection_pool.spec.config[:adapter]
     require "xid/connection_adapters/#{adapter_name}_adapter"
+  rescue LoadError
+    puts "XID was unable to load the transaction ID extension for the '#{adapter_name}' adapter"
   end
 end
 
