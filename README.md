@@ -4,9 +4,17 @@ Adds ability to ActiveRecord to retrieve the current transaction ID. This can be
 for the purposes of grouping operations performed on many records across many tables. In particular I
 had its usage with auditing libraries in mind.
 
-Currently supports:
+Currently supported adapters:
 
 - PostgreSQL
+- OracleEnhanced (untested, help!)
+- Mysql, Mysql2 (help! user needs PROCESS privileges and requires a query returning/modifying records before you can get an id!!!)
+
+Adapters with no support for retreiving the transactions ID:
+
+- Sqlite
+- Sqlite3
+
 
 Please fork and add functionality for other databases.
 
