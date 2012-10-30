@@ -27,5 +27,34 @@ shared_examples "transaction ID supported behaviour" do
       adapter.transaction_id.should be_nil
     end
 
+    it "should return same transaction id from within a nested transactions" do
+      transaction_ids = []
+
+      ActiveRecord::Base.transaction do
+        transaction_ids << adapter.transaction_id
+
+        ActiveRecord::Base.transaction do
+          transaction_ids << adapter.transaction_id
+        end
+
+        ActiveRecord::Base.transaction(:requires_new => true) do
+          transaction_ids << adapter.transaction_id
+        end
+
+        transaction_ids << adapter.transaction_id
+      end
+
+      transaction_ids.uniq.size.should eq 1
+    end
   end
+
+  describe "#transaction" do
+    it "should yield the transaction id with block has non-zero arity" do
+      ActiveRecord::Base.transaction do |tid|
+        tid.should_not be_blank
+        tid.should eq ActiveRecord::Base.connection.transaction_id
+      end
+    end
+  end
+
 end
