@@ -50,7 +50,7 @@ To avoid issues or transaction support of your adapter you can just use a synthe
 
     XID.use_synthetic_id!
 
-An UUID will be generated on request from the [UUIDTools gem]{http://uuidtools.rubyforge.org/}. This id is the same for the whole transaction, including any savepoints.
+An UUID will be generated on request from the [UUIDTools gem](http://uuidtools.rubyforge.org/). This id is the same for the whole transaction, including any savepoints.
 
 
 ## Contributing
