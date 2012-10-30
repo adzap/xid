@@ -14,7 +14,7 @@ module XID
       #   is extended with an "epoch" counter so it will not wrap around during the 
       #   life of an installation.
       #
-      def transaction_id
+      def select_transaction_id
         select_value('SELECT txid_current()')
       end
 

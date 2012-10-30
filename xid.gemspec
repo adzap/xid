@@ -14,4 +14,5 @@ Gem::Specification.new do |gem|
   gem.name          = "xid"
   gem.require_paths = ["lib"]
   gem.version       = XID::VERSION
+  gem.add_runtime_dependency('uuidtools', ["~> 2.1.3"])
 end

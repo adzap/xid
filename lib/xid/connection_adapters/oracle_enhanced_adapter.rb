@@ -6,8 +6,8 @@ module XID
         true
       end
 
-      def transaction_id
-        select_value('SELECT dbms_transaction.local_transaction_id FROM dual').to_i
+      def select_transaction_id
+        select_value('SELECT dbms_transaction.local_transaction_id FROM dual')
       end
 
     end

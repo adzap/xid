@@ -6,7 +6,7 @@ module XID
         true
       end
 
-      def transaction_id
+      def select_transaction_id
         select_value('SELECT trx_id FROM information_schema.innodb_trx WHERE trx_mysql_thread_id = CONNECTION_ID()')
       end
 
