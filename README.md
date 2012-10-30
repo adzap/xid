@@ -10,13 +10,15 @@ Currently supported adapters:
 - OracleEnhanced (untested, help!)
 - Mysql, Mysql2 (help! user needs PROCESS privileges and requires a query returning/modifying records before you can get an id!!!)
 
-Adapters with no support for retreiving the transactions ID:
+Adapters with no support for retreiving a transaction's ID:
 
 - Sqlite
 - Sqlite3
 
-
 Please fork and add functionality for other databases.
+
+NOTE: You can forget about the native transactions and use the sythentic transaction id. See the usage.
+
 
 ## Installation
 
@@ -37,6 +39,18 @@ Or install it yourself as:
 Simply call this to get the current ID:
 
     ActiveRecord::Base.connection.transaction_id
+
+Also, in a transaction block if you provide a block argument
+
+    Model.transaction do |transaction_id|
+      puts transaction_id
+    end
+
+To avoid issues or transaction support of your adapter you can just use a synthetic UUID as the transaction ID. In an initializer:
+
+    XID.use_synthetic_id!
+
+An UUID will be generated on request from the [UUIDTools gem]{http://uuidtools.rubyforge.org/}. This id is the same for the whole transaction, including any savepoints.
 
 
 ## Contributing
